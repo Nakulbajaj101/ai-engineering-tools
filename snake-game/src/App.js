@@ -330,13 +330,13 @@ const SnakeGame = () => {
           height: GRID_SIZE * CELL_SIZE,
         }}
       >
-        <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0 opacity-30">
           {Array.from({ length: GRID_SIZE }).map((_, y) => (
             <div key={y} className="flex">
               {Array.from({ length: GRID_SIZE }).map((_, x) => (
                 <div
                   key={`${x}-${y}`}
-                  className="border border-purple-500/20"
+                  className="border border-purple-400/40"
                   style={{ width: CELL_SIZE, height: CELL_SIZE }}
                 />
               ))}

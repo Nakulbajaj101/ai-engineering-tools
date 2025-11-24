@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useRef } from 'react'
+import React, { useState, useEffect, useCallback, useRef } from 'react'
 
 const GRID_SIZE = 20
 const CELL_SIZE = 15
@@ -195,6 +195,27 @@ const SnakeGame = () => {
         width: GRID_SIZE * CELL_SIZE,
         height: GRID_SIZE * CELL_SIZE,
       }}>
+        {/* Grid lines for better visibility and color blind accessibility */}
+        <div className="game-grid">
+          {Array.from({ length: GRID_SIZE + 1 }).map((_, i) => (
+            <React.Fragment key={i}>
+              <div
+                className="grid-line grid-line-vertical"
+                style={{
+                  left: i * CELL_SIZE,
+                  height: GRID_SIZE * CELL_SIZE,
+                }}
+              />
+              <div
+                className="grid-line grid-line-horizontal"
+                style={{
+                  top: i * CELL_SIZE,
+                  width: GRID_SIZE * CELL_SIZE,
+                }}
+              />
+            </React.Fragment>
+          ))}
+        </div>
         {snake.map((segment, index) => (
           <div
             key={index}
@@ -217,7 +238,16 @@ const SnakeGame = () => {
             height: CELL_SIZE,
             backgroundColor: FOOD_TYPES[food.type].color,
           }}
-        />
+        >
+          {/* Visual pattern for color blind accessibility */}
+          <div 
+            className={`food-pattern food-pattern-${food.type}`}
+            style={{
+              width: '100%',
+              height: '100%',
+            }}
+          />
+        </div>
 
         {gameOver && (
           <div className="game-overlay">
