@@ -177,8 +177,8 @@ const SnakeGame = () => {
           setHighScore(newScore);
         }
         
-        // Double speed every 100 points
-        if (Math.floor(newScore / 100) > Math.floor(score / 100)) {
+        // Double speed every 200 points
+        if (Math.floor(newScore / 200) > Math.floor(score / 200)) {
           setGameSpeed(prevSpeed => Math.max(prevSpeed / 1.2, 30));
         }
         
@@ -194,8 +194,8 @@ const SnakeGame = () => {
           setHighScore(newScore);
         }
         
-        // Double speed every 100 points
-        if (Math.floor(newScore / 100) > Math.floor(score / 100)) {
+        // Double speed every 200 points
+        if (Math.floor(newScore / 200) > Math.floor(score / 200)) {
           setGameSpeed(prevSpeed => Math.max(prevSpeed / 1.2, 30));
         }
         
@@ -280,7 +280,7 @@ const SnakeGame = () => {
     }
   };
 
-  const speedMultiplier = Math.pow(1.2, Math.floor(score / 100));
+  const speedMultiplier = Math.pow(1.2, Math.floor(score / 200));
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 p-8">
@@ -460,7 +460,7 @@ const SnakeGame = () => {
           <div>{wallMode ? 'Hitting walls ends the game' : 'Snake wraps around edges'}</div>
           <div>🔴 Red Food: +10 points, +1 segment</div>
           <div>⭐ Golden Power-Up: +50 points, +50% growth (disappears in 5s)</div>
-          <div>⚡ Speed 1.2X every 100 points!</div>
+          <div>⚡ Speed 1.2X every 200 points!</div>
         </div>
       </div>
     </div>
