@@ -1,0 +1,332 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Courier New', monospace;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Nokia Phone Frame */
+.phone-frame {
+  background: linear-gradient(145deg, #2c3e50, #34495e);
+  border-radius: 35px;
+  padding: 25px;
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border: 3px solid #1a252f;
+  position: relative;
+}
+
+.phone-frame::before {
+  content: 'NOKIA';
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #a0a0a0;
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 3px;
+}
+
+.phone-screen {
+  background: linear-gradient(135deg, #b8d4a8 0%, #a8c498 100%);
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow:
+    inset 0 2px 10px rgba(0, 0, 0, 0.3),
+    0 2px 5px rgba(0, 0, 0, 0.2);
+  border: 2px solid #5a6b4f;
+  margin-bottom: 20px;
+}
+
+.phone-keypad {
+  text-align: center;
+  padding: 15px;
+  color: #a0a0a0;
+  font-size: 11px;
+}
+
+.keypad-instruction {
+  margin: 5px 0;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Snake Game */
+.snake-game {
+  background: #8ba678;
+  border-radius: 5px;
+  padding: 8px;
+  box-shadow: inset 0 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 10px;
+  background: rgba(107, 142, 35, 0.3);
+  border-radius: 4px;
+  margin-bottom: 8px;
+  border: 1px solid #6b8e23;
+}
+
+.game-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.info-label {
+  font-size: 9px;
+  color: #2d3f1f;
+  font-weight: bold;
+  margin-bottom: 2px;
+  text-transform: uppercase;
+}
+
+.info-value {
+  font-size: 14px;
+  font-weight: bold;
+  color: #1a2412;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.game-canvas {
+  position: relative;
+  background: #9db88a;
+  border: 2px solid #6b8e23;
+  border-radius: 4px;
+  box-shadow:
+    inset 0 2px 8px rgba(0, 0, 0, 0.15),
+    0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 8px;
+}
+
+/* Snake */
+.snake-segment {
+  position: absolute;
+  background: linear-gradient(135deg, #2d5016 0%, #3a6b1e 50%, #2d5016 100%);
+  border: 1px solid #1a3010;
+  border-radius: 2px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: all 0.05s ease-out;
+}
+
+.snake-head {
+  background: linear-gradient(135deg, #1a3010 0%, #2d5016 50%, #1a3010 100%);
+  border-radius: 3px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    0 1px 3px rgba(0, 0, 0, 0.4);
+  z-index: 10;
+}
+
+.snake-head::before,
+.snake-head::after {
+  content: '';
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: #ff6b6b;
+  border-radius: 50%;
+  top: 3px;
+  box-shadow: 0 0 2px rgba(255, 107, 107, 0.8);
+}
+
+.snake-head::before {
+  left: 3px;
+}
+
+.snake-head::after {
+  right: 3px;
+}
+
+/* Food */
+.food {
+  position: absolute;
+  border-radius: 50%;
+  box-shadow:
+    inset 0 -1px 3px rgba(0, 0, 0, 0.3),
+    inset 0 1px 2px rgba(255, 255, 255, 0.4),
+    0 2px 4px rgba(0, 0, 0, 0.3);
+  animation: pulse 0.8s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+  50% {
+    transform: scale(1.15);
+    filter: brightness(1.2);
+  }
+}
+
+/* Game Overlay */
+.game-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(107, 142, 35, 0.9);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  z-index: 100;
+}
+
+.game-over-text {
+  font-size: 28px;
+  font-weight: bold;
+  color: #ff4444;
+  text-shadow:
+    2px 2px 0 #000,
+    0 0 10px rgba(255, 68, 68, 0.5);
+  margin-bottom: 15px;
+  animation: blink 1s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.paused-text {
+  font-size: 28px;
+  font-weight: bold;
+  color: #ffeb3b;
+  text-shadow:
+    2px 2px 0 #000,
+    0 0 10px rgba(255, 235, 59, 0.5);
+  margin-bottom: 15px;
+}
+
+.final-score {
+  font-size: 18px;
+  color: #fff;
+  text-shadow: 1px 1px 2px #000;
+  margin-bottom: 20px;
+}
+
+.restart-text {
+  font-size: 12px;
+  color: #e0e0e0;
+  text-shadow: 1px 1px 2px #000;
+  animation: fadeInOut 2s ease-in-out infinite;
+}
+
+@keyframes fadeInOut {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+/* Game Footer */
+.game-footer {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.game-button {
+  flex: 1;
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #4a5d3b 0%, #5a7045 50%, #4a5d3b 100%);
+  color: #fff;
+  border: 2px solid #3a4d2b;
+  border-radius: 8px;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+  box-shadow:
+    0 3px 6px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: all 0.1s ease;
+}
+
+.game-button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #5a7045 0%, #6a8055 50%, #5a7045 100%);
+  transform: translateY(-1px);
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.game-button:active:not(:disabled) {
+  transform: translateY(1px);
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.4),
+    inset 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.game-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .phone-frame {
+    padding: 15px;
+    border-radius: 25px;
+  }
+
+  .phone-screen {
+    padding: 8px;
+  }
+
+  .game-header {
+    padding: 6px 8px;
+  }
+
+  .info-label {
+    font-size: 8px;
+  }
+
+  .info-value {
+    font-size: 12px;
+  }
+
+  .game-over-text,
+  .paused-text {
+    font-size: 24px;
+  }
+
+  .keypad-instruction {
+    font-size: 10px;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .food,
+  .game-over-text,
+  .restart-text {
+    animation: none;
+  }
+
+  .snake-segment {
+    transition: none;
+  }
+}
