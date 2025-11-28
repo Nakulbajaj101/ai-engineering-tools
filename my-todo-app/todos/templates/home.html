@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - Todo App{% endblock %}
+
+{% block content %}
+<div class="text-center text-white py-5">
+    <h1 class="display-4 mb-4">Welcome to Your Todo App</h1>
+    <p class="lead mb-4">Stay organized and productive with our simple, beautiful todo management system.</p>
+    
+    <div class="row g-4 mt-5">
+        <div class="col-md-4">
+            <div class="card h-100" style="border: none; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);">
+                <div class="card-body text-dark">
+                    <h5 class="card-title mb-3">📝 Create Tasks</h5>
+                    <p class="card-text">Add new todos with titles, descriptions, and due dates.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100" style="border: none; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);">
+                <div class="card-body text-dark">
+                    <h5 class="card-title mb-3">✅ Track Progress</h5>
+                    <p class="card-text">Mark tasks as complete and monitor your productivity.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100" style="border: none; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);">
+                <div class="card-body text-dark">
+                    <h5 class="card-title mb-3">⏰ Manage Deadlines</h5>
+                    <p class="card-text">Set due dates and never miss important deadlines.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-5">
+        <a href="{% url 'todo-list' %}" class="btn btn-light btn-lg me-3">
+            View My Todos
+        </a>
+        <a href="{% url 'todo-create' %}" class="btn btn-outline-light btn-lg">
+            Create New Todo
+        </a>
+    </div>
+</div>
+{% endblock %}
