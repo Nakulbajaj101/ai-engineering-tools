@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: live-coding-platform
+    env: docker
+    plan: free
+    dockerContext: .
+    buildCommand: docker build -t live-coding-platform .
+    startCommand: docker run -p 10000:3000 live-coding-platform
+    envVars:
+      - key: PORT
+        value: 3000

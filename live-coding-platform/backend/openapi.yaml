@@ -1,0 +1,49 @@
+openapi: 3.0.0
+info:
+  title: Live Coding Platform API
+  version: 1.0.0
+  description: API for managing coding interview sessions.
+servers:
+  - url: http://localhost:3000
+    description: Local development server
+paths:
+  /sessions:
+    post:
+      summary: Create a new session
+      operationId: createSession
+      responses:
+        '201':
+          description: Session created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  sessionId:
+                    type: string
+                  createdAt:
+                    type: string
+  /sessions/{sessionId}:
+    get:
+      summary: Get session details
+      operationId: getSession
+      parameters:
+        - name: sessionId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Session details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  sessionId:
+                    type: string
+                  createdAt:
+                    type: string
+        '404':
+          description: Session not found
